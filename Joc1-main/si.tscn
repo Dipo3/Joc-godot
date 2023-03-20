@@ -1,0 +1,104 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://parets.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Jugador1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Label.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 8 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 8.5, 8.5 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 17.9056, 311.667 )
+
+[node name="si" type="Node2D"]
+scale = Vector2( 1.29823, 1.09091 )
+
+[node name="Jugador1" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 0 )
+
+[node name="CollisionShape2D" parent="Jugador1/jujadog" index="0"]
+position = Vector2( 0, 0 )
+shape = SubResource( 1 )
+
+[node name="Sprite" parent="Jugador1/jujadog" index="1"]
+scale = Vector2( 0.0389444, 0.054477 )
+
+[node name="CollisionShape2D" parent="Jugador1/jujadog/detector" index="0"]
+shape = SubResource( 2 )
+
+[node name="torna" type="Area2D" parent="Jugador1/jujadog" index="3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Jugador1/jujadog/torna"]
+position = Vector2( -228.003, -25.6667 )
+shape = SubResource( 3 )
+
+[node name="parets" parent="." instance=ExtResource( 1 )]
+position = Vector2( 129.407, 0 )
+
+[node name="parets5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 412.87, 29.3334 )
+
+[node name="parets6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 486.817, -7.33335 )
+
+[node name="parets7" parent="." instance=ExtResource( 1 )]
+position = Vector2( 566.926, 14.6667 )
+
+[node name="parets8" parent="." instance=ExtResource( 1 )]
+position = Vector2( 671.684, -73.3335 )
+
+[node name="parets9" parent="." instance=ExtResource( 1 )]
+position = Vector2( 754.874, 0 )
+
+[node name="parets4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 338.923, -14.6667 )
+
+[node name="parets3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 264.976, -51.3335 )
+
+[node name="parets2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 197.192, 21.0834 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2( 0.606729, 0.867793 )
+current = true
+zoom = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Camera2D"]
+margin_left = -19.0434
+margin_top = -147.885
+margin_right = 20.9566
+margin_bottom = -133.885
+text = "0"
+align = 1
+valign = 1
+script = ExtResource( 3 )
+
+[connection signal="body_entered" from="Jugador1/jujadog/torna" to="Jugador1/jujadog" method="_on_torna_body_entered"]
+[connection signal="body_entered" from="parets" to="Camera2D/Label" method="_on_parets_body_entered"]
+[connection signal="body_entered" from="parets5" to="Camera2D/Label" method="_on_parets5_body_entered"]
+[connection signal="body_entered" from="parets6" to="Camera2D/Label" method="_on_parets6_body_entered"]
+[connection signal="body_entered" from="parets7" to="Camera2D/Label" method="_on_parets7_body_entered"]
+[connection signal="body_entered" from="parets8" to="Camera2D/Label" method="_on_parets8_body_entered"]
+[connection signal="body_entered" from="parets9" to="Camera2D/Label" method="_on_parets9_body_entered"]
+[connection signal="body_entered" from="parets4" to="Camera2D/Label" method="_on_parets4_body_entered"]
+[connection signal="body_entered" from="parets3" to="Camera2D/Label" method="_on_parets3_body_entered"]
+[connection signal="body_entered" from="parets2" to="Camera2D/Label" method="_on_parets2_body_entered"]
+[connection signal="body_entered" from="parets2" to="Camera2D/Label" method="_on_Point_area_body_entered"]
+
+[editable path="Jugador1"]
+[editable path="parets"]
+[editable path="parets5"]
+[editable path="parets6"]
+[editable path="parets7"]
+[editable path="parets8"]
+[editable path="parets9"]
+[editable path="parets4"]
+[editable path="parets3"]
+[editable path="parets2"]
